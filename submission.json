@@ -1,0 +1,217 @@
+{
+  "submission_id": "evidence-trail-lab-v1-20261009",
+  "name": "Evidence Trail Lab",
+  "image": "ghcr.io/arrana16/evidence-trail-lab:v1",
+  "schema": {
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "metadata": {
+          "additionalProperties": true,
+          "description": "Additional metadata for the action",
+          "title": "Metadata",
+          "type": "object"
+        },
+        "op": {
+          "description": "List files, read one file, or submit the final answer.",
+          "enum": [
+            "list",
+            "read",
+            "submit"
+          ],
+          "title": "Op",
+          "type": "string"
+        },
+        "path": {
+          "default": "",
+          "description": "Filename for a read action.",
+          "title": "Path",
+          "type": "string"
+        },
+        "entity": {
+          "default": "",
+          "description": "Entity ID with the largest verified increase.",
+          "title": "Entity",
+          "type": "string"
+        },
+        "delta": {
+          "default": 0,
+          "description": "Verified actual minus plan, as an integer.",
+          "title": "Delta",
+          "type": "integer"
+        },
+        "evidence": {
+          "description": "Record IDs supporting the submitted plan and final actual.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "op"
+      ],
+      "title": "TrailAction",
+      "type": "object"
+    },
+    "observation": {
+      "additionalProperties": false,
+      "properties": {
+        "done": {
+          "default": false,
+          "description": "Whether the episode has terminated",
+          "title": "Done",
+          "type": "boolean"
+        },
+        "reward": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reward signal from the last action",
+          "title": "Reward"
+        },
+        "metadata": {
+          "additionalProperties": true,
+          "description": "Additional metadata for the observation",
+          "title": "Metadata",
+          "type": "object"
+        },
+        "task": {
+          "default": "",
+          "description": "Investigation task ID.",
+          "title": "Task",
+          "type": "string"
+        },
+        "message": {
+          "default": "",
+          "description": "Instruction or action result.",
+          "title": "Message",
+          "type": "string"
+        },
+        "files": {
+          "description": "Available filenames.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Files",
+          "type": "array"
+        },
+        "content": {
+          "default": "",
+          "description": "Content returned by a read action.",
+          "title": "Content",
+          "type": "string"
+        },
+        "steps_left": {
+          "default": 0,
+          "description": "Actions remaining in the episode.",
+          "title": "Steps Left",
+          "type": "integer"
+        }
+      },
+      "title": "TrailObservation",
+      "type": "object"
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "service-latency",
+      "split": "train",
+      "reset_wall_s": 180,
+      "rollout_wall_s": 900,
+      "verifier_wall_s": 120,
+      "tool_calls_total": 8,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192
+    },
+    {
+      "task_id": "supply-yield",
+      "split": "train",
+      "reset_wall_s": 180,
+      "rollout_wall_s": 900,
+      "verifier_wall_s": 120,
+      "tool_calls_total": 8,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192
+    },
+    {
+      "task_id": "lab-concentration",
+      "split": "train",
+      "reset_wall_s": 180,
+      "rollout_wall_s": 900,
+      "verifier_wall_s": 120,
+      "tool_calls_total": 8,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192
+    },
+    {
+      "task_id": "invoice-total",
+      "split": "train",
+      "reset_wall_s": 180,
+      "rollout_wall_s": 900,
+      "verifier_wall_s": 120,
+      "tool_calls_total": 8,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192
+    },
+    {
+      "task_id": "portfolio-exposure",
+      "split": "train",
+      "reset_wall_s": 180,
+      "rollout_wall_s": 900,
+      "verifier_wall_s": 120,
+      "tool_calls_total": 8,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192
+    },
+    {
+      "task_id": "media-duration",
+      "split": "train",
+      "reset_wall_s": 180,
+      "rollout_wall_s": 900,
+      "verifier_wall_s": 120,
+      "tool_calls_total": 8,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192
+    }
+  ],
+  "example_actions": [
+    {
+      "op": "read",
+      "path": "brief.txt"
+    },
+    {
+      "op": "submit",
+      "entity": "",
+      "delta": 0,
+      "evidence": []
+    }
+  ],
+  "finish_action": {
+    "op": "submit",
+    "entity": "",
+    "delta": 0,
+    "evidence": []
+  },
+  "dataset": "arrana16/evidence-trail-lab",
+  "source": "https://github.com/arrana16/evidence-trail-lab"
+}
