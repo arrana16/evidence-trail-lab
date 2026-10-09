@@ -54,4 +54,18 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish image
         run: docker push "$IMAGE"
-
+      - name: Pull without registry credentials
+        run: |
+          docker logout ghcr.io
+          docker image rm "$IMAGE"
+          DOCKER_CONFIG="$(mktemp -d)" docker pull "$IMAGE"
+      - name: Recheck anonymously pulled image
+        run: |
+          docker run --rm -d --name evidence-trail-test -p 8000:8000 "$IMAGE"
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://localhost:8000/health; then break; fi
+            sleep 2
+          done
+          openenv validate --url http://localhost:8000
+          python scripts/replay.py http://localhost:8000
+          docker stop evidence-trail-test
