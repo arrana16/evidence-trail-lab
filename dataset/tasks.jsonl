@@ -1,0 +1,7 @@
+{"task_id":"service-latency","split":"train","domain":"software operations","metric":"latency","unit":"ms","example_seed":42}
+{"task_id":"supply-yield","split":"train","domain":"industrial operations","metric":"yield","unit":"units","example_seed":42}
+{"task_id":"lab-concentration","split":"train","domain":"natural science","metric":"concentration","unit":"ppm","example_seed":42}
+{"task_id":"invoice-total","split":"train","domain":"office reconciliation","metric":"billable total","unit":"USD","example_seed":42}
+{"task_id":"portfolio-exposure","split":"train","domain":"finance","metric":"exposure","unit":"USD","example_seed":42}
+{"task_id":"media-duration","split":"train","domain":"media production","metric":"duration","unit":"seconds","example_seed":42}
+
