@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evidence-trail-lab"
+version = "0.1.0"
+description = "An OpenEnv environment for source-aware investigations"
+requires-python = ">=3.11"
+dependencies = [
+  "openenv @ git+https://github.com/meta-pytorch/OpenEnv.git@86a180ede21e044f7929b9a7783ad83aa67d83a3",
+]
+
+[tool.setuptools.packages.find]
+include = ["evidence_trail*"]
+
