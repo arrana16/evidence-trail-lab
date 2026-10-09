@@ -1,7 +1,7 @@
 {
   "submission_id": "evidence-trail-lab-v1-20261009",
   "name": "Evidence Trail Lab",
-  "image": "ghcr.io/arrana16/evidence-trail-lab:v1",
+  "image": "ghcr.io/arrana16/evidence-trail-lab@sha256:c664a6eb0f727c638f8e5871bb0a03d75051cc2bd0ac953cd0e66c9e4f86ae4e",
   "schema": {
     "action": {
       "additionalProperties": false,
